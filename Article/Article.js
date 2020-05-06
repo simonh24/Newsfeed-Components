@@ -146,6 +146,7 @@ function createArticle(articleAttrs) {
   articleFirst.textContent = firstParagraph;
   articleSecond.textContent = secondParagraph;
   articleThird.textContent = thirdParagraph;
+  articleExpand.textContent = "Expand"
 
   articleExpand.onclick = function() {
     article.classList.toggle("article-open");
@@ -155,7 +156,6 @@ function createArticle(articleAttrs) {
 
 }
 const arts = data.map(item => createArticle(item));
-console.log(arts);
 for (let i = 0; i < arts.length; i++) {
   document.querySelector("div.articles").appendChild(arts[i]);
 }
