@@ -100,6 +100,7 @@ const data = [
   </div>
 
   Hint: You will need to use createElement more than once here!
+  
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
@@ -112,3 +113,42 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function createArticle(articleAttrs) {
+  const {title, date, firstParagraph, secondParagraph, thirdParagraph} = articleAttrs;
+  const article = document.createElement("div");
+  const articleTitle = document.createElement("h2");
+  const articleDate = document.createElement("p");
+  const articleFirst = document.createElement("p");
+  const articleSecond = document.createElement("p");
+  const articleThird = document.createElement("p");
+  const articleExpand = document.createElement("span");
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirst);
+  article.appendChild(articleSecond);
+  article.appendChild(articleThird);
+  article.appendChild(articleExpand);
+  article.classList.add("article");
+  articleDate.classList.add("date");
+  articleExpand.classList.add("expandButton");
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleFirst.textContent = firstParagraph;
+  articleSecond.textContent = secondParagraph;
+  articleThird.textContent = thirdParagraph;
+
+  articleExpand.onclick = function() {
+    article.classList.toggle("article-open");
+  }
+
+  return article;
+
+}
+const arts = data.map(item => createArticle(item));
+console.log(arts);
+for (let i = 0; i < arts.length; i++) {
+  document.querySelector("div.articles").appendChild(arts[i]);
+}
